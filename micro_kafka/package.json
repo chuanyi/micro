@@ -1,5 +1,5 @@
 {
-  "name": "micro_hive",
+  "name": "micro_kafka",
   "version": "1.0.0",
   "description": "Hive query plugin for micro_app",
   "main": "index.js",
