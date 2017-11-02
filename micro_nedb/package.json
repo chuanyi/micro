@@ -1,0 +1,14 @@
+{
+  "name": "micro_nedb",
+  "version": "1.0.0",
+  "description": "NeDB plugin for micro_app",
+  "main": "index.js",
+  "dependencies": {
+    "nedb": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chuanyi.zheng@gmail.com",
+  "license": "MIT"
+}

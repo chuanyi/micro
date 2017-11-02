@@ -1,0 +1,26 @@
+{
+  "name": "micro_web",
+  "version": "1.0.0",
+  "description": "Web plugin for micro_app",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "",
+    "koa-static":"",
+    "koa-router":"",
+    "koa-body":"",
+    "koa-bodyparser":"",
+    "koa-qs":"",
+    "koa-ejs":"",
+    "co-busboy":"",
+    "save-to":"",
+    "ejs":"",
+    "node-fetch":"",
+    "form-data":"",
+    "micro_tool":""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chuanyi.zheng@gmail.com",
+  "license": "MIT"
+}

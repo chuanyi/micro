@@ -1,0 +1,14 @@
+{
+  "name": "micro_app",
+  "version": "1.0.0",
+  "description": "A microservice nodejs app skeleton, easy to use config or extend.",
+  "main": "index.js",
+  "dependencies": {
+    "ini": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chuanyi.zheng@gmail.com",
+  "license": "MIT"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "micro_hive",
+  "version": "1.0.0",
+  "description": "Hive query plugin for micro_app",
+  "main": "index.js",
+  "dependencies": {
+    "sqlstring": "",
+    "base64-js": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chuanyi.zheng@gmail.com",
+  "license": "MIT"
+}

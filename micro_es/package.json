@@ -1,0 +1,14 @@
+{
+  "name": "micro_es",
+  "version": "1.0.0",
+  "description": "Elastic search plugin for micro_app",
+  "main": "index.js",
+  "dependencies": {
+    "elasticsearch": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chuanyi.zheng@gmail.com",
+  "license": "MIT"
+}

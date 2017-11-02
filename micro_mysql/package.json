@@ -1,0 +1,15 @@
+{
+  "name": "micro_mysql",
+  "version": "1.0.0",
+  "description": "Mysql plugin for micro_app",
+  "main": "index.js",
+  "dependencies": {
+    "generic-pool": "",
+    "mysql": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chuanyi.zheng@gmail.com",
+  "license": "MIT"
+}
