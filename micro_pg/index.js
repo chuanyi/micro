@@ -68,6 +68,7 @@ module.exports = {
     };
 
     return {
+      pool: pool,
       query: query,
       pageQuery: pageQuery,
       pageQueryByOrder: pageQueryByOrder,
