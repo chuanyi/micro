@@ -10,7 +10,10 @@
  *  var now = TOOL.nowDate();
  *  var now = TOOL.nowTime();
  *  var now = TOOL.nowDateTime();
- *  var date = TOOL.getDateTime(timeVal)
+ *  var date = TOOL.getDateTime(timeVal);
+ *  var date = TOOL.strToDateTime('2012-12-33 12:33:33');
+ *  TOOL.moment  // see http://momentjs.com/docs/
+ * 
  *  var ret = TOOL.toStr(v, 'default');
  *  var ret = TOOL.toInt(v, 0);
  *
@@ -18,16 +21,13 @@
  *
  *  TOOL.rmdir.sync(tempP);   // recursive remove or make dir
  *  TOOL.mkdir.sync(p);
+ *
  */
-var uuid = require('node-uuid');
-var co = require('co');
-var rimraf = require('rimraf');
-var mkdirp = require('mkdirp');
-
-function tov(i) {
-	if (i < 10) return '0' + i;
-	return '' + i;
-}
+var co = require('co'),
+    uuid = require('node-uuid'),
+    rimraf = require('rimraf'),
+    mkdirp = require('mkdirp'),
+    moment = require('moment');
 
 module.exports = {
 	init: function(cfg) {
@@ -42,6 +42,7 @@ module.exports = {
 				return uuid.v1().toString();
 			},
 			co: co,
+			moment: moment,
 			rmdir: function(path) {
 				rimraf.sync(path);
 			},
@@ -49,42 +50,19 @@ module.exports = {
 				mkdirp.sync(path);
 			},
 			nowDateTime: function() {
-				var d, s;
-				d = new Date();
-				s = '' + d.getFullYear();
-				s += '-' + tov(d.getMonth() + 1);
-				s += '-' + tov(d.getDate());
-				s += " " + tov(d.getHours());
-				s += ":" + tov(d.getMinutes());
-				s += ":" + tov(d.getSeconds());
-				return s;
+				return moment().format('YYYY-MM-DD HH:mm:ss');
 			},
 			getDateTime: function(timeVal) {
-				var d, s;
-				d = new Date(timeVal);
-				s = '' + d.getFullYear();
-				s += '-' + tov(d.getMonth() + 1);
-				s += '-' + tov(d.getDate());
-				s += " " + tov(d.getHours());
-				s += ":" + tov(d.getMinutes());
-				s += ":" + tov(d.getSeconds());
-				return s;
+				return moment(new Date(timeVal)).format('YYYY-MM-DD HH:mm:ss');
 			},
 			nowDate: function() {
-				var d, s;
-				d = new Date();
-				s = '' + d.getFullYear();
-				s += '-' + tov(d.getMonth() + 1);
-				s += '-' + tov(d.getDate());
-				return s;
+				return moment().format('YYYY-MM-DD');
 			},
 			nowTime: function() {
-				var d, s;
-				d = new Date();
-				s = tov(d.getHours());
-				s += ":" + tov(d.getMinutes());
-				s += ":" + tov(d.getSeconds());
-				return s;
+				return moment().format('HH:mm:ss');
+			},
+			strToDateTime: function(str) {
+                return moment(str, 'YYYY-MM-DD HH:mm:ss').toDate();
 			},
 			toStr: function(v, def) {
 				if (typeof (v) == 'undefined' || v == '' || v == null) {

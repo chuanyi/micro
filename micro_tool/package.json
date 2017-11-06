@@ -1,13 +1,14 @@
 {
   "name": "micro_tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tool utilities plugin for micro_app",
   "main": "index.js",
   "dependencies": {
     "node-uuid": "",
-    "co":"",
-    "rimraf":"",
-    "mkdirp":""
+    "co": "",
+    "rimraf": "",
+    "mkdirp": "",
+    "moment": ""
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
