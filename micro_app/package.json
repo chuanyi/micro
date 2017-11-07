@@ -1,6 +1,6 @@
 {
   "name": "micro_app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A microservice nodejs app skeleton, easy to use config or extend.",
   "main": "index.js",
   "dependencies": {

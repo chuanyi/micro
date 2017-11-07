@@ -10,7 +10,7 @@
 *   recv.on('message', function(msg){
 *      console.log(msg);
 *   });
-*   var prod = KAFKA.producter({options});
+*   var prod = KAFKA.producer({options});
 *   prod.send([{topic:'xxx', messages:['xxx','xxx']}]);
 */
 
@@ -18,11 +18,11 @@ var kafka = require('kafka-node');
 module.exports = {
   init: function(cfg) {
     return {
-      consumer: function('topic', opts) {
-        return new kafka.Consumer(new kafka.KafkaClient({kafkaHost:CFG.host+':'+CFG.port}), [{topic:topic}], opts || {});
+      consumer: function(topic, opts) {
+        return new kafka.Consumer(new kafka.KafkaClient({kafkaHost:cfg.host+':'+cfg.port}), [{topic:topic}], opts || {});
       },
       producer: function(opts) {
-        return new kafka.Producer(new kafka.KafkaClient({kafkaHost:CFG.host+':'+CFG.port}), opts || {});
+        return new kafka.Producer(new kafka.KafkaClient({kafkaHost:cfg.host+':'+cfg.port}), opts || {});
       }
     }
   }

@@ -13,14 +13,14 @@
  *  var date = TOOL.getDateTime(timeVal);
  *  var date = TOOL.strToDateTime('2012-12-33 12:33:33');
  *  TOOL.moment  // see http://momentjs.com/docs/
- * 
+ *
  *  var ret = TOOL.toStr(v, 'default');
  *  var ret = TOOL.toInt(v, 0);
  *
  *  TOOL.co(function*(){});
  *
- *  TOOL.rmdir.sync(tempP);   // recursive remove or make dir
- *  TOOL.mkdir.sync(p);
+ *  TOOL.rmdir(tempP);   // recursive remove or make dir
+ *  TOOL.mkdir(p);
  *
  */
 var co = require('co'),
@@ -28,6 +28,10 @@ var co = require('co'),
     rimraf = require('rimraf'),
     mkdirp = require('mkdirp'),
     moment = require('moment');
+
+String.prototype.replaceAll = function(s1, s2) {
+  return this.replace(new RegExp(s1, 'gm'), s2);
+}
 
 module.exports = {
 	init: function(cfg) {

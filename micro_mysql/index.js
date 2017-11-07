@@ -17,16 +17,21 @@ var poolModule = require('generic-pool');
 var mysql = require('mysql');
 module.exports = {
   init: function(cfg) {
-    var pool = poolModule.Pool({
-      name: 'mysql',
-      create: function(callback) {
-        var client = mysql.createConnection(cfg);
-        client.connect();
-        return callback(null, client);
+    var pool = poolModule.createPool({
+      create: function() {
+        return new Promise(function(resolve, reject){
+          var client = mysql.createConnection(cfg);
+          client.connect();
+          resolve(client);
+        });
       },
       destroy: function(client) {
-        return client.end();
-      },
+        return new Promise(function(resolve){
+          client.end();
+          resolve();
+        });
+      }
+    },{
       max: 10,
       idleTimeoutMillis: 30000,
       log: false
@@ -34,22 +39,17 @@ module.exports = {
     var query = function*(sql, args) {
       if (!args) args = [];
       return new Promise(function (resolve, reject) {
-        pool.acquire(function(err, client) {
-          if (err) {
-            reject(err);
-          } else {
-           var querys =  client.query(sql, args, function(err, res) {
-              pool.release(client);
-              if (err && err.code === 'PROTOCOL_SEQUENCE_TIMEOUT') {
-                //console.log('query timeout:'+sql);
-              }
-              if (err) {
-                reject(err);
-              }else{
-                resolve(res);
-              }
-            });
-          }
+        pool.acquire().then(function(client){
+          var querys = client.query(sql, args, function(err, res) {
+             pool.release(client);
+             if (err) {
+               reject(err);
+             }else{
+               resolve(res);
+             }
+           });
+        }).catch(function(err){
+          reject(err);
         });
       });
     };

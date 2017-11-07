@@ -1,6 +1,6 @@
 {
   "name": "micro_mysql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mysql plugin for micro_app",
   "main": "index.js",
   "dependencies": {

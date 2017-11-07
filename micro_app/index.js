@@ -6,9 +6,20 @@ var fs = require('fs'),
  * app.use({plugin:{k:v,...}});               - npm plugins
  * app.use({name:'',init(cfg){}}, {k:v,...}); - anonymous plugin
  * app.run();
+ * CFG.xxx / CFG['xxx'] / CFG.get('mod', 'key') / CFG.get('key')
  */
 module.exports = function(cfg_file) {
    global.CFG = ini.parse(fs.readFileSync(cfg_file, 'utf8'));
+   CFG.get = function(mod, key) {
+     if (key) {
+      mod = mod + '.' + key;
+     }
+     var v = CFG[mod];
+     if (!v) {
+       v = CFG[CFG['id']+'.'+mod];
+     }
+     return v;
+   }
    return {
      use(plugin, cfg) {
        if (cfg) {
