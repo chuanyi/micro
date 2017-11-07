@@ -75,6 +75,13 @@ module.exports = {
 					return def;
 				}
 				return parseInt(v);
+			},
+			sleep: function*(tick) {
+			  return new Promise(function(resolve, reject){
+			    setTimeout(function(){
+			      resolve(null);
+			    }, tick);
+			  });
 			}
 		}
 	}
