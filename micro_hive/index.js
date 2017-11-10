@@ -43,7 +43,7 @@ module.exports = {
               if (stdout.startsWith('Error')) {
                 reject(stdout);
               }else{
-                resolve(Buffer.from(base64js.toByteArray(stdout.trim())).toString('utf8'));
+                resolve(JSON.parse(Buffer.from(base64js.toByteArray(stdout.trim())).toString('utf8')));
               }
             }
           });
